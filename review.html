@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ride Experience Rating</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      align-items: center; /* Align to the center vertically */
+      height: 100vh;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://t4.ftcdn.net/jpg/04/15/75/45/240_F_415754534_jnG5uBb7C754AsT2mtITwxDxpdJjqKzQ.jpg'); /* Replace with the path to your background image */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 28px;
+    }
+
+    .rating-box {
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      margin-right: 20px; /* Add margin to the right side for separation */
+      margin-left: auto; /* Move the box to the right */
+    }
+
+    .rating-options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .star-container {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .star {
+      font-size: 60px;
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.3s;
+      margin: 0 15px;
+    }
+
+    .star-labels {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .star-label {
+      font-size: 16px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    .selected-star {
+      color: #f39c12;
+    }
+
+    .submit-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rating-box">
+    <h2>Rate Your Ride Experience</h2>
+
+    <div class="rating-options">
+      <div class="star-container">
+        <span class="star" onclick="selectRating(5)" id="star5">&#9734;</span>
+        <span class="star" onclick="selectRating(4)" id="star4">&#9734;</span>
+        <span class="star" onclick="selectRating(3)" id="star3">&#9734;</span>
+        <span class="star" onclick="selectRating(2)" id="star2">&#9734;</span>
+        <span class="star" onclick="selectRating(1)" id="star1">&#9734;</span>
+      </div>
+      <div class="star-labels">
+        <span class="star-label">Excellent</span>
+        <span class="star-label">Good</span>
+        <span class="star-label">Average</span>
+        <span class="star-label">Bad</span>
+        <span class="star-label">Very Bad</span>
+      </div>
+    </div>
+
+    <button class="submit-button" onclick="submitReview()">Submit</button>
+  </div>
+
+  <script>
+    var selectedRating = null;
+
+    function selectRating(rating) {
+      // Set the selected rating
+      selectedRating = rating;
+
+      // Remove 'selected-star' class from all stars
+      for (var i = 1; i <= 5; i++) {
+        var starElement = document.getElementById("star" + i);
+        starElement.classList.remove('selected-star');
+      }
+
+      // Add 'selected-star' class to the clicked stars
+      for (var i = 1; i <= rating; i++) {
+        var starElement = document.getElementById("star" + i);
+        starElement.classList.add('selected-star');
+      }
+    }
+
+    function submitReview() {
+      if (selectedRating) {
+        // You can handle the submitted data here, such as sending it to a server or processing it in some way
+        console.log("Rating: " + selectedRating);
+
+        // Redirect to the thank you page after pressing "Submit"
+        window.location.href = "thankyou.html"; // Replace "thankyou.html" with your actual thank you page
+      } else {
+        alert("Please select a rating.");
+      }
+    }
+    function redirectToThankYou() {
+      window.location.href = "Thankyou.html"; // Replace with your actual thank you page URL
+    }
+  </script>
+
+</body>
+</html>

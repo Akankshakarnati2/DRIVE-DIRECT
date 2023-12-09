@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Options</title>
+  <!-- Include QRCode.js library -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-blue-mobile-phone-scan-code-payment-technology-banner-background-image_260854.jpg'); /* Replace with the path to your background image */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #paymentBox {
+      text-align: center;
+      border: 1px solid rgb(226, 149, 209);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      background-color: rgba(226, 149, 209, 0.8); /* Add a semi-transparent white background */
+    }
+
+    #qrcode {
+      display: none;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #dddddd;
+      color: #555;
+      cursor: not-allowed;
+    }
+
+    #doneButton {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #doneButton:hover {
+      background-color: #2980b9;
+    }
+
+    #doneButton:disabled {
+      background-color: #dddddd;
+      color: #555;
+      cursor: not-allowed;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="paymentBox">
+    <h2>Select a Payment Option</h2>
+
+    <form id="paymentForm">
+      <label>
+        <input type="radio" name="payment_method" value="gpay">
+        Google Pay
+      </label>
+
+      <br>
+
+      <label>
+        <input type="radio" name="payment_method" value="cash_on_delivery">
+        Cash on Delivery
+      </label>
+
+      <br>
+
+      <button type="button" onclick="generateQRCode()">Proceed to Payment</button>
+
+      <!-- New "Done" button initially hidden -->
+      <button type="button" class="hidden" id="doneButton" onclick="redirectToThankYou()">Done</button>
+
+      <!-- Message element initially hidden -->
+      <div id="message" class="hidden"></div>
+    </form>
+
+    <!-- Display QR code here -->
+    <div id="qrcode"></div>
+  </div>
+
+  <script>
+    function generateQRCode() {
+      var selectedOption = document.querySelector('input[name="payment_method"]:checked');
+      var proceedButton = document.querySelector('button');
+      var doneButton = document.getElementById('doneButton');
+      var messageDiv = document.getElementById('message');
+
+      if (proceedButton.disabled) {
+        return; // Do nothing if the button is already disabled
+      }
+
+      if (selectedOption) {
+        if (selectedOption.value === "gpay") {
+          var qrCodeDiv = document.getElementById("qrcode");
+
+          // Get the payment data (replace this with actual payment details)
+          var paymentData = "Your_Google_Pay_Payment_Data";
+
+          // Generate QR code using QRCode.js
+          var qrcode = new QRCode(qrCodeDiv, {
+            text: paymentData,
+            width: 128,
+            height: 128
+          });
+
+          // Show the QR code
+          qrCodeDiv.style.display = "block";
+
+          // Disable the "Proceed to Payment" button after one click
+          proceedButton.disabled = true;
+
+          // Show the "Done" button
+          doneButton.classList.remove('hidden');
+        } else if (selectedOption.value === "cash_on_delivery") {
+          // Show a message for Cash on Delivery
+          messageDiv.textContent = "Thank you for choosing Cash on Delivery. Your order will be processed.";
+          messageDiv.classList.remove('hidden');
+          
+          // Disable the "Proceed to Payment" button after one click
+          proceedButton.disabled = true;
+          
+          // Show the "Done" button
+          doneButton.classList.remove('hidden');
+        }
+      } else {
+        alert("Please select a payment option.");
+      }
+    }
+
+    // Function to redirect to the thank you page
+    function redirectToThankYou() {
+      window.location.href = "review.html"; // Replace with your actual thank you page URL
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <style>
+    .circular-image {
+      border-radius: 50%;
+      overflow: hidden;
+      width: 250px;
+      /* Adjust the size as needed */
+      height: 250px;
+      /* Adjust the size as needed */
+    }
+
+    /* Style for image inside the circular container */
+    .circular-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+    }
+
+    img {
+      max-width: 100%;
+      /* Make sure the image doesn't exceed its container */
+    }
+
+    .title {
+      margin-left: 20px;
+      /* Adjust the margin based on your preference */
+    }
+   
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+      background-size: 200% 200%;
+      animation: gradient 10s ease infinite;
+    }
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    h1 {
+      font-family: 'Helvetica', sans-serif;
+      color: white;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+    <!-- Circular image container -->
+    <div class="circular-image">
+      <!-- Replace 'your-image.jpg' with the actual path to your image -->
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/010/761/230/non_2x/dd-logo-d-d-design-white-dd-letter-dd-letter-logo-design-initial-letter-dd-linked-circle-uppercase-monogram-logo-vector.jpg"
+        alt="your logo">
+    </div>
+    <div>
+    <h1 align="">Drive Direct</h1>
+    <br>
+    <button style="background-color: #bebb10; /* Green */
+               border: none;
+               color: white;
+               padding: 15px 32px;
+               text-align: center;
+               text-decoration: none;
+               display: inline-block;
+               font-size: 16px;
+               margin: 4px 2px;
+               cursor: pointer;
+               border-radius: 8px;"
+              button onclick ="window.location.href = 'drive.html'";>Let's Ride</button>
+  </div>
+  <script>
+    function redirectToNextPage() {
+      // Change 'nextPage.html' to the actual file or URL of your next page
+      window.location.href = 'drive.html';
+    }
+  </script>
+</body>
+</html>

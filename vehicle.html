@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Ride</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #rideContainer {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-simple-business-e-commerce-web-page-image_20833.jpg'); /* Replace with the path to your background image */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="rideContainer">
+        <h1>Choose Your Ride</h1>
+
+        <form onsubmit="confirmRide(); return false;">
+            <h2><label>
+                <input type="radio" name="vehicle" value="car" checked>
+               Car
+            </label></h2>
+
+           <h2> <label>
+                <input type="radio" name="vehicle" value="bus">
+                Auto
+            </label></h2>
+
+            <h2><label>
+                <input type="radio" name="vehicle" value="bike">
+                Bike
+            </label></h2>
+
+            <br>
+
+            <button style="background-color: #bebb10; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;"
+           button onclick ="window.location.href = 'payment.html'";>submit</button>
+        </form>
+
+        <div id="rideResult"></div>
+    </div>
+
+    <script>
+        function confirmRide() {
+            const selectedVehicle = document.querySelector('input[name="vehicle"]:checked').value;
+            document.getElementById('rideResult').innerText =' Enjoy your ride on the ${selectedVehicle}!';
+        }
+        function redirectTopayment() {
+      window.location.href = "payment.html"; // Replace with your actual thank you page URL
+    }
+    </script>
+
+</body>
+</html>
